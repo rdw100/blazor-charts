@@ -1,4 +1,4 @@
-﻿# Blazor ChartJS
+﻿# BlazorCharts
 This Blazor demonstration project was created using Visual Studio 2019 16.8.3, .NET 5, & Chart.js 2.9.4.  The objective is to invoke Chart.js from a Blazor Server app.
 
 ## Demo
