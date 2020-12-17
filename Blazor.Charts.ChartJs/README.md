@@ -1,6 +1,10 @@
 ﻿# Blazor ChartJS
 This Blazor demonstration project was created using Visual Studio 2019 16.8.3, .NET 5, & Chart.js 2.9.4.  The objective is to invoke Chart.js from a Blazor Server app.
 
+## Demo
+The animated gif below demonstrates application execution.
+![Blazor Chart GIF](https://github.com/rdw100/BlazorCharts/blob/master/Blazor.Charts.ChartJs/wwwroot/img/L3F8L1RUbc.gif?raw=true)
+
 ## Steps (Summary)
 1. Add Chart.js to the project.  
 	* Create JS folder in wwwroot.	
@@ -19,5 +23,3 @@ This Blazor demonstration project was created using Visual Studio 2019 16.8.3, .
 
 5. Add Chart razor component to razor page.
 	* Add <Chart></Chart> to Index.Razor.
-
-![Blazor Chart GIF](https://github.com/rdw100/BlazorCharts/blob/master/Blazor.Charts.ChartJs/wwwroot/img/L3F8L1RUbc.gif?raw=true)
