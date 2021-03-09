@@ -42,9 +42,21 @@ a, .btn-link {
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+/* Relatively positioned container dedicated to the chart canvas */
+canvas {
+    border: 1px dotted red;
+}
+
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 20vh;
+    width: 20vw;
+}
