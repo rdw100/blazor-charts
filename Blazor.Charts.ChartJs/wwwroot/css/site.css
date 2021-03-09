@@ -60,3 +60,10 @@ canvas {
     height: 20vh;
     width: 20vw;
 }
+
+.line-chart-container {
+    position: relative;
+    margin: auto;
+    height: 10vh;
+    width: 10vw;
+}
