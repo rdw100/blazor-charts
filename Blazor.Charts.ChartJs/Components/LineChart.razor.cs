@@ -10,7 +10,7 @@ namespace Blazor.Charts.ChartJs.Components
     /// from C# by injecting the IJSRuntime service.
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Components.ComponentBase" />
-    public class ChartBase : ComponentBase
+    public class LineChartBase : ComponentBase
     {
         [Inject]
         public IJSRuntime JSRuntime { get; set; }

@@ -1,61 +1,62 @@
 ﻿@page "/Line"
 @using Blazor.Charts.ChartJs.Components
+@using Blazor.Charts.ChartJs.Entities
 
 <h3>Line</h3>
 
 <div class="row">
     <div class="col">
-        1 of 4
-        <Chart Id="line1"
-               Type="@Chart.ChartType.Line"
+        1 of 6
+        <LineChart Id="line1"
+               Types="@ChartTypes.Line"
                Data="@(new[] { "65","59","80","81","56","55","40" })"
                BackgroundColor="@(new[] { "rgb(75, 192, 192)"})"
                BorderColor="@(new[] { "rgb(75, 192, 192)"})"
-               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></Chart>
+               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></LineChart>
     </div>
     <div class="col">
-        2 of 4
-        <Chart Id="line2"
-               Type="@Chart.ChartType.Line"
+        2 of 6
+        <LineChart Id="line2"
+               Types="@ChartTypes.Line"
                Data="@(new[] { "65","59","80","81","56","55","40" })"
                BackgroundColor="@(new[] { "rgb(75, 192, 192)"})"
                BorderColor="@(new[] { "rgb(75, 192, 192)"})"
-               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></Chart>
+               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></LineChart>
     </div>
     <div class="col">
-        3 of 4
-        <Chart Id="line3"
-               Type="@Chart.ChartType.Line"
+        3 of 6
+        <LineChart Id="line3"
+               Types="@ChartTypes.Line"
                Data="@(new[] { "65","59","80","81","56","55","40" })"
                BackgroundColor="@(new[] { "rgb(75, 192, 192)"})"
                BorderColor="@(new[] { "rgb(75, 192, 192)"})"
-               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></Chart>
+               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></LineChart>
     </div>
     <div class="col">
-        4 of 4
-        <Chart Id="line4"
-               Type="@Chart.ChartType.Line"
+        4 of 6
+        <LineChart Id="line4"
+               Types="@ChartTypes.Line"
                Data="@(new[] { "65","59","80","81","56","55","40" })"
                BackgroundColor="@(new[] { "rgb(75, 192, 192)"})"
                BorderColor="@(new[] { "rgb(75, 192, 192)"})"
-               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></Chart>
+               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></LineChart>
     </div>
     <div class="col">
         5 of 6
-        <Chart Id="line5"
-               Type="@Chart.ChartType.Line"
+        <LineChart Id="line5"
+               Types="@ChartTypes.Line"
                Data="@(new[] { "65","59","80","81","56","55","40" })"
                BackgroundColor="@(new[] { "rgb(75, 192, 192)"})"
                BorderColor="@(new[] { "rgb(75, 192, 192)"})"
-               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></Chart>
+               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></LineChart>
     </div>
     <div class="col">
         6 of 6
-        <Chart Id="line6"
-               Type="@Chart.ChartType.Line"
+        <LineChart Id="line6"
+               Types="@ChartTypes.Line"
                Data="@(new[] { "65","59","80","81","56","55","40" })"
                BackgroundColor="@(new[] { "rgb(75, 192, 192)"})"
                BorderColor="@(new[] { "rgb(75, 192, 192)"})"
-               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></Chart>
+               Labels="@(new[] { "January", "February", "March", "April", "May", "June", "July"})"></LineChart>
     </div>
 </div>
