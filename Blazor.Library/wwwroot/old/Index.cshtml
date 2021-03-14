@@ -1,0 +1,138 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>AnthroCloud Charts - </title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { packages: ['corechart', 'line'] });
+    </script>
+</head>
+<body>
+    <!-- style="width:'600';height:'600';"-->
+    <div id="chart_div">This is a test</div>
+    <script type="text/javascript">
+
+        google.charts.load('current', {
+            packages: ['corechart', 'line']
+        });
+        google.charts.setOnLoadCallback(LoadData);
+
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split('=');
+                if (decodeURIComponent(pair[0]) == variable) {
+                    return decodeURIComponent(pair[1]);
+                }
+            }
+        }
+        //https://stackoverflow.com/questions/14762775/ajax-if-condition
+        // url: 'LineChart/PopulationChart'
+        // url: 'LineChart/GetWFLJson/' + URLSearchParams(urlString).get('sex'),
+        function LoadData() {
+            //var num = this.href.substring(this.href.lastIndexOf('/') + 1);
+            //alert(document.location.href.substring( document.location.href.lastIndexOf( '/' ) ));
+            //var num = document.location.href.substring(document.location.href.lastIndexOf('='));
+            //var url;
+            //if (num == 1) {
+            //    url = ;
+            //} else {
+            //    url ''
+            //}
+            //var num = 1;
+            //var num = location.pathname.split('/').pop();
+            //var integer = parseInt(num, 10);
+            //var url = new URLSearchParams(urlString).get('sex');
+            //alert(url);
+            //var num = 2;
+            //alert(getQueryVariable('sex'));
+            var num = parseInt(getQueryVariable('sex'));
+            //console.log(num);
+            $.ajax({
+
+                url: 'LineChart/GetWFLJson/' + num,
+                dataType: "json",
+                type: "GET",
+                error: function (xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    toastr.error(err.message);
+                },
+                success: function (data) {
+                    PopulationChart(data);
+                    return false;
+                }
+            });
+            return false;
+        }
+
+        // {label: 'lengthincm', type:'number'}
+        // 'score',
+        function PopulationChart(data) {
+            var dataArray = [
+                ['lengthincm', 'score', 'p3', 'p15', 'p50', 'p85', 'p97']
+                //
+            ];
+
+            //var dataArray = [
+            //    ['Sex', '2020 Population', '2010 Population', '2000 Population', '1990 Population']
+            //];
+              
+            $.each(data, function (i, item) {
+                dataArray.push([item.lengthincm, item.score, item.p3, item.p15, item.p50, item.p85, item.p97 ]);
+            });
+
+            //$.each(data, function (i, item) {
+            //    dataArray.push([item.sex, item.populationYear2020, item.populationYear2010, item.populationYear2000, item.populationYear1990]);
+            //});
+
+            var data = google.visualization.arrayToDataTable(dataArray);
+            var options = {
+                title: 'Population of Largest Cities of Odisha ',
+                chartArea: {
+                    width: '50%'
+                },
+                colors: ['#b0120a', '#7b1fa2', '#ffab91', '#d95f02'],
+                hAxis: {
+                    title: 'City',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'Total Population'
+                },
+                'width': 550,
+                'height': 400,
+                curveType: 'function',
+                legend: 'right',
+                pointSize: 0,
+                series: {
+                    0: { pointSize: 10, lineWidth: 0, pointShape: { type: 'circle', sides: 5, dent: 0.8}, visibleInLegend: false},
+                    1: { color: '#000000' },
+                    2: { color: '#e10808' },
+                    //3: { color: '#ffd700' },
+                    3: { color: '#0c8d00' },
+                    //5: { color: '#ffd700' },
+                    4: { color: '#e10808' },
+                    5: { color: '#000000' }
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+            return false;
+        }
+
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
+
+    
+

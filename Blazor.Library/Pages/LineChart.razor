@@ -5,27 +5,50 @@
 <div class="row">
     <div class="col-md-6 col-sm-12 p-4">
         <label>Smooth <RadzenCheckBox @bind-Value="@smooth" Name="smooth"></RadzenCheckBox></label>
+        <h3>
+            Weight-for-length
+        </h3>
+        <h4>
+            WHO 2006 Standard
+        </h4>
+        <h5>
+            Birth to 5 Years (Percentile)
+        </h5>
         <RadzenChart>
-            <RadzenLineSeries Smooth="@smooth" Data="@revenue2019" CategoryProperty="Date" Title="2019" LineType="LineType.Dashed" ValueProperty="Revenue">
-                <RadzenMarkers MarkerType="MarkerType.Square" />
-            </RadzenLineSeries>
-            <RadzenLineSeries Smooth="@smooth" Data="@revenue2020" CategoryProperty="Date" Title="2020" ValueProperty="Revenue">
+            <RadzenLineSeries Stroke="blue" StrokeWidth="2" Data="@plot" Title="2018" CategoryProperty="Length" ValueProperty="Weight" LineType="LineType.Solid">
                 <RadzenMarkers MarkerType="MarkerType.Circle" />
             </RadzenLineSeries>
-            <RadzenCategoryAxis Padding="20" FormatString="{0:MMM}" />
-            <RadzenValueAxis Formatter="@FormatAsUSD">
+            <RadzenLineSeries Stroke="green" StrokeWidth="2" Smooth="@smooth" Data="@l50th" Title="2019" CategoryProperty="Length" ValueProperty="Weight" LineType="LineType.Solid">
+                <RadzenMarkers MarkerType="MarkerType.None" />
+            </RadzenLineSeries>
+            <RadzenLineSeries Stroke="red" StrokeWidth="2" Smooth="@smooth" Data="@l97th" Title="2020" CategoryProperty="Length" ValueProperty="Weight">
+                <RadzenMarkers MarkerType="MarkerType.None" />
+            </RadzenLineSeries>
+            <RadzenCategoryAxis Max="110" Min="40" Step="10" Visible="true" >
+                <RadzenAxisTitle Text="Length (cm)" />
+            </RadzenCategoryAxis>
+            <RadzenValueAxis Max="26" Min="0" Step="2"> 
                 <RadzenGridLines Visible="true" />
-                <RadzenAxisTitle Text="Revenue in USD" />
+                <RadzenAxisTitle Text="Weight (kg)" />
             </RadzenValueAxis>
+            <RadzenLegend Position="LegendPosition.Right">
+            </RadzenLegend> 
         </RadzenChart>
     </div>
 </div>
 @code {
     bool smooth = false;
+
+    class LegendItem
+    {
+        public string n97th { get; set; }
+        public string n85th { get; set; }
+    }
+
     class DataItem
     {
-        public DateTime Date { get; set; }
-        public double Revenue { get; set; }
+        public double Length { get; set; }
+        public double Weight { get; set; }
     }
 
     string FormatAsUSD(object value)
@@ -33,129 +56,97 @@
         return ((double)value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
     }
 
-    DataItem[] revenue2019 = new DataItem[] {
+    LegendItem[] legendItem = new LegendItem[]
+{
+        new LegendItem
+        {
+            n97th = "97th",
+            n85th= "85th"
+        }
+};
+
+    DataItem[] plot = new DataItem[]
+    {
         new DataItem
         {
-            Date = DateTime.Parse("2019-01-01"),
-            Revenue = 234000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-02-01"),
-            Revenue = 269000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-03-01"),
-            Revenue = 233000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-04-01"),
-            Revenue = 244000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-05-01"),
-            Revenue = 214000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-06-01"),
-            Revenue = 253000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-07-01"),
-            Revenue = 274000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-08-01"),
-            Revenue = 284000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-09-01"),
-            Revenue = 273000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-10-01"),
-            Revenue = 282000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-11-01"),
-            Revenue = 289000
-        },
-        new DataItem
-        {
-            Date = DateTime.Parse("2019-12-01"),
-            Revenue = 294000
+            Weight = 8,
+            Length = 70
         }
     };
 
-    DataItem[] revenue2020 = new DataItem[] {
+    DataItem[] l50th = new DataItem[] {
         new DataItem
         {
-            Date = DateTime.Parse("2019-01-01"),
-            Revenue = 334000
+            Weight = 2.75,
+            Length = 50
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-02-01"),
-            Revenue = 369000
+            Weight = 5.5,
+            Length = 60
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-03-01"),
-            Revenue = 333000
+            Weight = 7,
+            Length = 70
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-04-01"),
-            Revenue = 344000
+            Weight = 9,
+            Length = 80
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-05-01"),
-            Revenue = 314000
+            Weight = 11,
+            Length = 90
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-06-01"),
-            Revenue = 353000
+            Weight = 12.5,
+            Length = 100
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-07-01"),
-            Revenue = 374000
+            Weight = 15,
+            Length = 110
+        }
+    };
+
+    DataItem[] l97th = new DataItem[] {
+        new DataItem
+        {
+            Weight = 2.5,
+            Length = 50
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-08-01"),
-            Revenue = 384000
+            Weight = 5,
+            Length = 60
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-09-01"),
-            Revenue = 373000
+            Weight = 6.5,
+            Length = 70
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-10-01"),
-            Revenue = 382000
+            Weight = 8.5,
+            Length = 80
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-11-01"),
-            Revenue = 389000
+            Weight = 10.5,
+            Length = 90
         },
         new DataItem
         {
-            Date = DateTime.Parse("2019-12-01"),
-            Revenue = 394000
+            Weight = 12,
+            Length = 100
+        },
+        new DataItem
+        {
+            Weight = 14.5,
+            Length = 110
         }
     };
 }
