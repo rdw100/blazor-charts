@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Charts.ChartJs", "Bl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Library", "Blazor.Library\Blazor.Library.csproj", "{9E4C5B2C-5CC3-4C6A-BF12-D472BCA79700}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.Library.Mud", "Blazor.Library.Mud\Blazor.Library.Mud.csproj", "{3A46C0A2-7E24-4C6A-B5B9-D115C3B3AE5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Library.Mud", "Blazor.Library.Mud\Blazor.Library.Mud.csproj", "{3A46C0A2-7E24-4C6A-B5B9-D115C3B3AE5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
