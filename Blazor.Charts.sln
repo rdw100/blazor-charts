@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Charts.ChartJs", "Blazor.Charts.ChartJs\Blazor.Charts.ChartJs.csproj", "{FDBC5F16-3913-4BF7-BA2A-DC713378528F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.Library", "Blazor.Library\Blazor.Library.csproj", "{9E4C5B2C-5CC3-4C6A-BF12-D472BCA79700}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Library", "Blazor.Library\Blazor.Library.csproj", "{9E4C5B2C-5CC3-4C6A-BF12-D472BCA79700}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.Library.Mud", "Blazor.Library.Mud\Blazor.Library.Mud.csproj", "{3A46C0A2-7E24-4C6A-B5B9-D115C3B3AE5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9E4C5B2C-5CC3-4C6A-BF12-D472BCA79700}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E4C5B2C-5CC3-4C6A-BF12-D472BCA79700}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E4C5B2C-5CC3-4C6A-BF12-D472BCA79700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A46C0A2-7E24-4C6A-B5B9-D115C3B3AE5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A46C0A2-7E24-4C6A-B5B9-D115C3B3AE5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A46C0A2-7E24-4C6A-B5B9-D115C3B3AE5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A46C0A2-7E24-4C6A-B5B9-D115C3B3AE5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
