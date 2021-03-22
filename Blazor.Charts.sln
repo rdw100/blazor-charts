@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Library", "Blazor.Li
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Library.Mud", "Blazor.Library.Mud\Blazor.Library.Mud.csproj", "{3A46C0A2-7E24-4C6A-B5B9-D115C3B3AE5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.Charts.ChartJs.JsInterOp", "Blazor.Charts.ChartJs.JsInterOp\Blazor.Charts.ChartJs.JsInterOp.csproj", "{6452C91C-8582-41D0-9BE2-BE823224521B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Charts.ChartJs.JsInterOp", "Blazor.Charts.ChartJs.JsInterOp\Blazor.Charts.ChartJs.JsInterOp.csproj", "{6452C91C-8582-41D0-9BE2-BE823224521B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/OrgChart"
 @inject IJSRuntime JsRuntime
 <h1>Hello, world!</h1>
 
@@ -9,20 +9,16 @@ Welcome to your new app.
     <li>Calls the Chart.js Draw method.</li>
 </ul>
 
-<div id="curve_chart" style="width: 900px; height: 500px"></div>
+<div id="chart">
 
-@*<div>
-    <canvas id="myChart"></canvas>
-</div>*@
-
-@*<div id="chart"></div>*@
+</div>
 
 @functions
 {
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var pChart = new Data.pChart();
-        var data = pChart.getData;
+        var hierarchies = new Data.Hierarchies();
+        var data = hierarchies.data;
         await JsRuntime.InvokeAsync<Task>("drawChart", data);
     }
 }
