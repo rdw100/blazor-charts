@@ -10,7 +10,7 @@ Welcome to your new app.
 </ul>
 
 <div id="curve_chart" style="width: 900px; height: 500px"></div>
-
+<div id="piechart" style="width: 900px; height: 500px;"></div>
 @*<div>
     <canvas id="myChart"></canvas>
 </div>*@
@@ -22,7 +22,11 @@ Welcome to your new app.
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         var pChart = new Data.pChart();
-        var data = pChart.getData;
+        //var newData = pChart.getData;
+        //var data = pChart.OnGetChartData;
+        var data = pChart.OnGetChartData();
+        //var jsonData = pChart.GetPlotData();
+        
         await JsRuntime.InvokeAsync<Task>("drawChart", data);
     }
 }
