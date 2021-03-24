@@ -73,6 +73,30 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
             return jsonString;
         }
 
+        public string GetChartData()
+        {
+            var chart = new Chart
+            {
+                cols = new object[]
+                {
+                    new { id = "year", label = "Year", type = "string" },
+                    new { id = "sales", label = "Sales", type = "number" },
+                    new { id = "expenses", label = "Expenses", type = "number" }
+                },
+                rows = new object[]
+                {
+                    new { c = new object[] { new { v = "2014" }, new { v = 1000 }, new { v = 400 } } },
+                    new { c = new object[] { new { v = "2015" }, new { v = 1170 }, new { v = 460 } } },
+                    new { c = new object[] { new { v = "2016" }, new { v = 660 }, new { v = 1120 } } },
+                    new { c = new object[] { new { v = "2017" }, new { v = 1030 }, new { v = 540 } } }
+                }
+            };
+
+            string jsonString = JsonSerializer.Serialize(chart);
+
+            return jsonString;
+        }
+
         public DataItem[] GetPlotData() 
         { 
             var row =  new DataItem[] {
@@ -155,12 +179,6 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
 
     public class Chart
     {
-        //public Chart(object[] newCols, object[] newRows)
-        //{
-        //    cols = newCols;
-        //    rows = newRows;
-        //}
-
         public object[] cols { get; set; }
         public object[] rows { get; set; }
     }

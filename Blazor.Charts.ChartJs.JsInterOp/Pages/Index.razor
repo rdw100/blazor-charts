@@ -8,9 +8,10 @@ Welcome to your new app.
     <li>Loads a Typed List into Data param.</li>
     <li>Calls the Chart.js Draw method.</li>
 </ul>
+<div id="line_top_x" style="width: 900px; height: 500px"></div>
 
-<div id="curve_chart" style="width: 900px; height: 500px"></div>
-<div id="piechart" style="width: 900px; height: 500px;"></div>
+@*<div id="curve_chart" style="width: 900px; height: 500px"></div>
+<div id="piechart" style="width: 900px; height: 500px;"></div>*@
 
 @*<div>
     <canvas id="myChart"></canvas>
@@ -25,9 +26,9 @@ Welcome to your new app.
         var pChart = new Data.pChart();
         //var newData = pChart.getData;
         //var data = pChart.OnGetChartData;
-        var data = pChart.OnGetChartData();
+        //var data = pChart.OnGetChartData();
         //var data = pChart.GetPlotData();
-        //var data = "{cols: [{id: 'topping',label: 'Topping',type: 'string'}, {id: 'slices',label: 'Slices',type: 'number'}],rows: [{c: [{v: 'Mushrooms'}, {v: 3}]}, {c: [{v: 'Onions'}, {v: 1}]}, {c: [{v: 'Olives'}, {v: 1}]}, {c: [{v: 'Zucchini'}, {v: 1}]}, {c: [{v: 'Pepperoni'}, {v: 2}]}]}";
+        var data = pChart.GetChartData();
         await JsRuntime.InvokeAsync<Task>("drawChart", data);
     }
 }
