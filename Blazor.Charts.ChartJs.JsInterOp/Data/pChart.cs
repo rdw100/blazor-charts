@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json;
-//using System.Data;
 
 namespace Blazor.Charts.ChartJs.JsInterOp.Data
 {
@@ -25,66 +24,53 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
             }
         }
 
-        //    ['Year', 'Sales', 'Expenses'],
-        //    ['2004', 1000, 400],
-        //    ['2005', 1170, 460],
-        //    ['2006', 660, 1120],
-        //    ['2007', 1030, 540]
-        //    [{ label: 'Year', id: 'year' },
-        //    { label: 'Sales', id: 'Sales', type: 'number' }, // Use object notation to explicitly specify the data type.
-        //    { label: 'Expenses', id: 'Expenses', type: 'number' }],
-        //    ['2014', 1000, 400],
-        //    ['2015', 1170, 460],
-        //    ['2016', 660, 1120],
-        //    ['2017', 1030, 540]]);
 
-        //['Task', 'Hours per Day'],
-        //        ['Work', 11],
-        //        ['Eat', 2],
-        //        ['Commute', 2],
-        //        ['Watch TV', 2],
-        //        ['Sleep', 7]
-
-        public byte[] OnGetChartData()
+        public string OnGetChartData()
         {
+            //List<Sales> t = new List<Sales>
+            //{
+            //    new Sales
+            //    {
+            //        Year = "2004",
+            //        Sale = 1000,
+            //        Expense = 400
+            //    },
+            //    new Sales
+            //    {
+            //        Year = "2005",
+            //        Sale = 1170,
+            //        Expense = 460
+            //    },
+            //    new Sales
+            //    {
+            //        Year = "2006",
+            //        Sale = 660,
+            //        Expense = 2200
+            //    }
+            //};
+
+            //return JsonConvert.SerializeObject(t);
+            //return JsonSerializer.Serialize(t);
             var chart = new Chart
             {
                 cols = new object[]
                 {
-                    new { id = "topping", type = "string", label = "Topping" },
-                    new { id = "slices", type = "number", label = "Slices" }
+                    new { id = "task", label = "Task", type = "string" },
+                    new { id = "hours", label = "Hours per Day", type = "number" }
                 },
                 rows = new object[]
                 {
-                    new { c = new object[] { new { v = "Mushrooms" }, new { v = 3 } } },
-                    new { c = new object[] { new { v = "Onions" }, new { v = 1 } } },
-                    new { c = new object[] { new { v = "Olives" }, new { v = 1 } } },
-                    new { c = new object[] { new { v = "Zucchini" }, new { v = 1 } } },
-                    new { c = new object[] { new { v = "Pepperoni" }, new { v = 2 } } }
+                    new { c = new object[] { new { v = "Work" }, new { v = 11 } } },
+                    new { c = new object[] { new { v = "Eat" }, new { v = 6 } } },
+                    new { c = new object[] { new { v = "Commute" }, new { v = 12 } } },
+                    new { c = new object[] { new { v = "Watch TV" }, new { v = 5 } } },
+                    new { c = new object[] { new { v = "Sleep" }, new { v = 16 } } }
                 }
             };
 
-
-            byte[] jsonString = JsonSerializer.SerializeToUtf8Bytes(chart);
-
+            string jsonString = JsonSerializer.Serialize(chart);
+            
             return jsonString;
-
-            //var pizza = new[]
-            //{
-            //    new {Name = "Mushrooms", Count = 3},
-            //    new {Name = "Onions", Count = 1},
-            //    new {Name = "Olives", Count = 1},
-            //    new {Name = "Zucchini", Count = 1},
-            //    new {Name = "Pepperoni", Count = 2}
-            //};
-
-            //var json = pizza.ToGoogleDataTable()
-            //        .NewColumn(new Column(ColumnType.String, "Topping"), x => x.Name)
-            //        .NewColumn(new Column(ColumnType.Number, "Slices"), x => x.Count)
-            //        .Build()
-            //        .GetJson();
-
-            //return json;
         }
 
         public DataItem[] GetPlotData() 
@@ -184,5 +170,11 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
         public double X { get; set; }
         public double Y { get; set; }
     }
-}
 
+    public class Sales
+    {
+        public string Year { set; get; }
+        public int Sale { set; get; }
+        public int Expense { set; get; }
+    }
+}
