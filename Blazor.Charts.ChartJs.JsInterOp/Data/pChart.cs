@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Text.Json;
 
 namespace Blazor.Charts.ChartJs.JsInterOp.Data
 {
     public class pChart
     {
-        public List<pData> getData {
+        public List<pData> GetData
+        {
             get
             {
                 return new List<pData> {
@@ -13,17 +17,52 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
                     new pData { Length=5, p10 = 4, p50 = 10, p90 = 15 },
                     new pData { Length=5, p10 = 6, p50 = 13, p90 = 18 }
                 };
-
-                //List<pData> data = new List<pData> {
-                //    new pData { Length=5, p10 = 2, p50 = 8, p90 = 12 },
-                //    new pData { Length=5, p10 = 4, p50 = 10, p90 = 15 },
-                //    new pData { Length=5, p10 = 6, p50 = 13, p90 = 18 }
-                //};
-
-                //return DBHelper.ConvertToDataTable<pData>(data);
             }
         }
 
+        public pData[] GetListData {
+            get
+            {
+                List<Cols> cols = new List<Cols>
+                {
+                    new Cols {id = "length", label="Length", type = "number"},
+                    new Cols {id = "p10", label="P10", type = "number"},
+                    new Cols {id = "p50", label="P50", type = "number"},
+                    new Cols {id = "p90", label="P90", type = "number"}
+                };
+
+                List<pData> data = new List<pData> {
+                    new pData { Length=5, p10 = 2, p50 = 8, p90 = 12 },
+                    new pData { Length=5, p10 = 4, p50 = 10, p90 = 15 },
+                    new pData { Length=5, p10 = 6, p50 = 13, p90 = 18 }
+                };
+
+                var array = cols.ToArray();
+               
+                var newArray = data.ToArray();
+                var colArray = cols.Select(x => x.id).ToArray();
+
+                return data.ToArray();
+            }
+        }
+
+        public object[] GetDataTable()
+        {
+            // Step 2: here we create a DataTable.
+            // ... We add 4 columns, each with a Type.
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("Length", typeof(int));
+            table.Columns.Add("P10", typeof(int));
+            table.Columns.Add("P50", typeof(int));
+            table.Columns.Add("P90", typeof(int));
+
+            // Step 3: here we add rows.
+            table.Rows.Add(5, 2, 8, 12);
+            table.Rows.Add(7, 4, 10, 15);
+            table.Rows.Add(9, 6, 12, 18);
+            table.Rows.Add(11, 8, 14, 20);
+            return table.AsEnumerable().ToArray();
+        }
 
         public string OnGetChartData()
         {
@@ -68,7 +107,7 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
                 }
             };
 
-            string jsonString = JsonSerializer.Serialize(chart);
+            string jsonString = JsonSerializer.Serialize(chart.rows);
             
             return jsonString;
         }
@@ -91,6 +130,52 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
                     new { c = new object[] { new { v = "2017" }, new { v = 1030 }, new { v = 540 } } }
                 }
             };
+
+            string jsonString = JsonSerializer.Serialize(chart);
+
+            return jsonString;
+        }
+
+        public string GetLineChartData()
+        {
+
+            var chart = new LineChart
+            {
+                cols = new Cols[]
+                {
+                    new Cols { id = "year", label = "Year", type = "string" },
+                    new Cols { id = "sales", label = "Sales", type = "number" },
+                    new Cols { id = "expenses", label = "Expenses", type = "number" }
+                },
+                rows = new Rows[]
+                {
+                    new Rows { Year = "2014", Expense = 1000, Sale = 400 },
+                    new Rows { Year = "2015", Expense = 1170, Sale = 460 },
+                    new Rows { Year = "2016", Expense = 660, Sale = 1120 },
+                    new Rows { Year = "2017", Expense = 1030, Sale = 540 }
+                    //new { c = new object[] { new { v = "2014" }, new { v = 1000 }, new { v = 400 } } },
+                    //new { c = new object[] { new { v = "2015" }, new { v = 1170 }, new { v = 460 } } },
+                    //new { c = new object[] { new { v = "2016" }, new { v = 660 }, new { v = 1120 } } },
+                    //new { c = new object[] { new { v = "2017" }, new { v = 1030 }, new { v = 540 } } }
+                }
+            };
+
+            //var myLabels = new object[]
+            //{
+            //    new { label = "lengthincm", type = "number"},
+            //    new { label = "Score", type = "number"},
+            //    new { label = "97th", type = "number"},
+            //    new { label = "85th", type = "number"},
+            //    new { label = "50th", type = "number"},
+            //    new { label = "15th", type = "number"},
+            //    new { label = "3rd", type = "number"}
+            //};
+
+            //var data 
+
+            //$.each(data, function(i, item) {
+            //    dataArray.push([item.lengthincm, item.score, item.p97, item.p85, item.p50, item.p15, item.p3]);
+            //});
 
             string jsonString = JsonSerializer.Serialize(chart);
 
@@ -138,44 +223,8 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
             };
             return row;
         }
-        //public DataTable getDataTable()
-        //{
-        //    // Create a DataTable.
-        //    // ... We add 4 columns, each with a Type.
-        //    DataTable table = new DataTable();
-        //    table.Columns.Add("Dosage", typeof(int));
-        //    table.Columns.Add("Drug", typeof(string));
-        //    table.Columns.Add("Diagnosis", typeof(string));
-        //    table.Columns.Add("Date", typeof(DateTime));
-
-        //    // Add rows.
-        //    table.Rows.Add(25, "Drug A", "Disease A", DateTime.Now);
-        //    table.Rows.Add(50, "Drug Z", "Problem Z", DateTime.Now);
-        //    table.Rows.Add(10, "Drug Q", "Disorder Q", DateTime.Now);
-        //    table.Rows.Add(21, "Medicine A", "Diagnosis A", DateTime.Now);
-        //    return table;
-        //}
     }
 
-    //public static class DBHelper 
-    //{
-    //    public static DataTable ConvertToDataTable<T>(IList<T> data)
-    //    {
-    //        PropertyDescriptorCollection properties =
-    //           TypeDescriptor.GetProperties(typeof(T));
-    //        DataTable table = new DataTable();
-    //        foreach (PropertyDescriptor prop in properties)
-    //            table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
-    //        foreach (T item in data)
-    //        {
-    //            DataRow row = table.NewRow();
-    //            foreach (PropertyDescriptor prop in properties)
-    //                row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
-    //            table.Rows.Add(row);
-    //        }
-    //        return table;
-    //    }
-    //}
 
     public class Chart
     {
@@ -190,6 +239,26 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
     }
 
     public class Sales
+    {
+        public string Year { set; get; }
+        public int Sale { set; get; }
+        public int Expense { set; get; }
+    }
+
+    public class LineChart
+    {
+        public Cols[] cols { get; set; }
+        public Rows[] rows { get; set; }
+    }
+
+    public class Cols
+    {
+        public string id { get; set; }
+        public string label { get; set; }
+        public string type { get; set; }
+    }
+
+    public class Rows
     {
         public string Year { set; get; }
         public int Sale { set; get; }

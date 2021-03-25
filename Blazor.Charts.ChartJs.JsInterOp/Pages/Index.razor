@@ -12,23 +12,23 @@ Welcome to your new app.
 
 @*<div id="curve_chart" style="width: 900px; height: 500px"></div>
 <div id="piechart" style="width: 900px; height: 500px;"></div>*@
-
-@*<div>
-    <canvas id="myChart"></canvas>
-</div>*@
-
+@*<div><canvas id="myChart"></canvas></div>*@
 @*<div id="chart"></div>*@
 
 @functions
 {
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var pChart = new Data.pChart();
+        //var pChart = new Data.pChart();
         //var newData = pChart.getData;
-        //var data = pChart.OnGetChartData;
         //var data = pChart.OnGetChartData();
         //var data = pChart.GetPlotData();
-        var data = pChart.GetChartData();
+        //var data = pChart.GetChartData();
+        //var data = pChart.GetLineChartData();
+        //var data = pChart.GetListData;
+        //var data = pChart.GetDataTable();OnGetChartData
+        var gChart = new Data.GrowthChartData();
+        var data = gChart.GetData();
         await JsRuntime.InvokeAsync<Task>("drawChart", data);
     }
 }

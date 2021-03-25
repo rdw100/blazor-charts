@@ -18,7 +18,7 @@ Welcome to your new app.
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         var pChart = new Data.pChart();
-        var data = pChart.getData;
+        var data = pChart.GetListData;
         await JsRuntime.InvokeAsync<Task>("drawChart", data);
     }
 }
