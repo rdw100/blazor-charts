@@ -17,11 +17,20 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
                 },
                 rows = new List<Row>
                 {
+                    new Row
+                    {
+                        c = new List<C>
+                        {
+                            new C { v = "2019" },
+                            new C { v = 900 },
+                            new C { v = 600 }
+                        }
+                    },
                     new Row 
                     {
                         c = new List<C>
                         {
-                            new C { v = "2014" },
+                            new C { v = "2019" },
                             new C { v = 1000 },
                             new C { v = 400 }
                         }
@@ -30,7 +39,7 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
                     {
                         c = new List<C>
                         {
-                            new C { v = "2015" },
+                            new C { v = "2020" },
                             new C { v = 1170 },
                             new C { v = 460 }
                         }
@@ -39,7 +48,7 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
                     {
                         c = new List<C>
                         {
-                            new C { v = "2016" },
+                            new C { v = "2021" },
                             new C { v = 660 },
                             new C { v = 1120 }
                         }
