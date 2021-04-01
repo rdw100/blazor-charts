@@ -27,8 +27,9 @@ Welcome to your new app.
         //var data = pChart.GetLineChartData();
         //var data = pChart.GetListData;
         //var data = pChart.GetDataTable();OnGetChartData
+        //var data = gChart.GetData();
         var gChart = new Data.GrowthChartData();
-        var data = gChart.GetData();
+        var data = gChart.GetChartDataTable();
         await JsRuntime.InvokeAsync<Task>("drawChart", data);
     }
 }

@@ -48,15 +48,14 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
 
         public object[] GetDataTable()
         {
-            // Step 2: here we create a DataTable.
-            // ... We add 4 columns, each with a Type.
+            // create a DataTable
             System.Data.DataTable table = new System.Data.DataTable();
             table.Columns.Add("Length", typeof(int));
             table.Columns.Add("P10", typeof(int));
             table.Columns.Add("P50", typeof(int));
             table.Columns.Add("P90", typeof(int));
 
-            // Step 3: here we add rows.
+            // add rows
             table.Rows.Add(5, 2, 8, 12);
             table.Rows.Add(7, 4, 10, 15);
             table.Rows.Add(9, 6, 12, 18);
@@ -66,30 +65,6 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
 
         public string OnGetChartData()
         {
-            //List<Sales> t = new List<Sales>
-            //{
-            //    new Sales
-            //    {
-            //        Year = "2004",
-            //        Sale = 1000,
-            //        Expense = 400
-            //    },
-            //    new Sales
-            //    {
-            //        Year = "2005",
-            //        Sale = 1170,
-            //        Expense = 460
-            //    },
-            //    new Sales
-            //    {
-            //        Year = "2006",
-            //        Sale = 660,
-            //        Expense = 2200
-            //    }
-            //};
-
-            //return JsonConvert.SerializeObject(t);
-            //return JsonSerializer.Serialize(t);
             var chart = new Chart
             {
                 cols = new object[]
@@ -153,29 +128,8 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
                     new Rows { Year = "2015", Expense = 1170, Sale = 460 },
                     new Rows { Year = "2016", Expense = 660, Sale = 1120 },
                     new Rows { Year = "2017", Expense = 1030, Sale = 540 }
-                    //new { c = new object[] { new { v = "2014" }, new { v = 1000 }, new { v = 400 } } },
-                    //new { c = new object[] { new { v = "2015" }, new { v = 1170 }, new { v = 460 } } },
-                    //new { c = new object[] { new { v = "2016" }, new { v = 660 }, new { v = 1120 } } },
-                    //new { c = new object[] { new { v = "2017" }, new { v = 1030 }, new { v = 540 } } }
                 }
             };
-
-            //var myLabels = new object[]
-            //{
-            //    new { label = "lengthincm", type = "number"},
-            //    new { label = "Score", type = "number"},
-            //    new { label = "97th", type = "number"},
-            //    new { label = "85th", type = "number"},
-            //    new { label = "50th", type = "number"},
-            //    new { label = "15th", type = "number"},
-            //    new { label = "3rd", type = "number"}
-            //};
-
-            //var data 
-
-            //$.each(data, function(i, item) {
-            //    dataArray.push([item.lengthincm, item.score, item.p97, item.p85, item.p50, item.p15, item.p3]);
-            //});
 
             string jsonString = JsonSerializer.Serialize(chart);
 
