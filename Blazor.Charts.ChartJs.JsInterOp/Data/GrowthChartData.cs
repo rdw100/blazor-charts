@@ -21,7 +21,7 @@ namespace Blazor.Charts.ChartJs.JsInterOp.Data
             List<WFL_P> wfl = new List<WFL_P>() {
                 new WFL_P(1, 2, 3, 4, 5, 6, 7 ),
                 new WFL_P(8, 9, 10, 11, 12, 13, 14 ),
-                new WFL_P(15, 16, 17, 18, 19, 20, 21 ),
+                new WFL_P(15, 16, 17, 18, 19, 20, null ),
                 new WFL_P(22, 23, 24, 25, 26, 27, 28 ),
                 new WFL_P(29, 30, 31, 32, 33, 34, 35 )
             };
